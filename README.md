@@ -1,2 +1,180 @@
-# misgift
-hediye seçme sitesi
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hediye Seçme Uygulaması</title>
+    <link rel="shortcut icon" href="file:///C:/Users/misli/OneDrive/Resimler/OneDrive/Masa%C3%BCst%C3%BC/wep/image/icon.jpeg"/>
+		<meta charset="utf-8">
+		<meta name="Description" content="Hediye seçmekte zorlanıyor musunuz? Artık hediye seçerken saatlerce düşünmenize gerek kalmayacak. MisGift">
+		<meta name= "Keywords" content="Hediye, hediye seçme, doğum günü yediyesi, sevgiliye alınacak hediye, arkadaşa alınacak hediye">
+		<script language="javascript">
+		alert("sitenin mesajı")
+		</script>
+		
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+            height: 100%;
+            background-image: url(image/abc1.jpeg);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 0;
+        }
+
+        #container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            text-decoration: underline;
+        }
+
+        label {
+            font-weight: bold;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>MisGift</h1>
+
+        <label for="cinsiyet"><strong>Cinsiyet</strong></label>
+        <select id="cinsiyet">
+            <option value="kadin">Kadın</option>
+            <option value="erkek">Erkek</option>
+        </select>
+
+        <label for="alici"><strong>Kime Hediye Alacaksınız?</strong></label>
+        <select id="alici">
+            <option value="anne">Anne</option>
+            <option value="baba">Baba</option>
+            <option value="kardeş">Kardeş</option>
+            <option value="arkadas">Arkadaş</option>
+            <option value="sevgili">Sevgili</option>
+        </select>
+
+        <br><br>
+
+        <label for="durum"><strong>Hangi Durum İçin Hediye Alıyorsunuz?</strong></label>
+        <select id="durum">
+            <option value="dogumgunu">Doğum Günü</option>
+            <option value="yildonumu">Yıl Dönümü</option>
+            <option value="sevgililergunu">Sevgililer Günü</option>
+            <option value="yilbasi">Yılbaşı</option>
+            <option value="yeniis">Yeni İş Hediyesi</option>
+            <option value="annelergunu">Anneler Günü</option>
+        </select>
+
+        <br><br>
+
+        <label for="hobiler"><strong>Hangi Hobileri Seviyorsunuz?</strong></label>
+        <select id="hobiler" multiple>
+            <option value="kitaplar">Kitap Okuma</option>
+            <option value="muzik">Müzik Dinleme</option>
+            <option value="spor">Spor</option>
+            <option value="gezi">Gezi</option>
+            <option value="sanat">Sanat</option>
+        </select>
+
+        <br><br>
+
+        <button onclick="hediyeOnerileriniAl()">Hediye Önerilerini Al</button>
+
+        <p id="hediyeOnerisi"></p>
+    </div>
+
+    <script>
+        function hediyeOnerileriniAl() {
+            var cinsiyet = document.getElementById("cinsiyet").value;
+            var alici = document.getElementById("alici").value;
+            var durum = document.getElementById("durum").value;
+            var hobiler = Array.from(document.getElementById("hobiler").selectedOptions).map(option => option.value);
+            
+            var hediyeOnerileri = {
+                "kadin-anne-dogumgunu": "Çiçek buketi",
+                "kadin-anne-yildonumu": "Takı seti",
+                "kadin-anne-sevgililergunu": "Parfüm",
+                "kadin-anne-yilbasi": "Ev terliği",
+                "kadin-anne-yeniis": "Ofis aksesuarları",
+                "kadin-anne-annelergunu": "Spa ve masaj paketi",
+                "kadin-baba-dogumgunu": "Bira seti",
+                "kadin-baba-yildonumu": "Deri cüzdan",
+                "kadin-baba-sevgililergunu": "Elektronik aksesuarlar",
+                "kadin-baba-yilbasi": "Kahve makinesi",
+                "kadin-baba-yeniis": "Klasik kravat",
+                "kadin-baba-annelergunu": "Mutfak aletleri",
+                "kadin-kardes-dogumgunu": "Moda dergisi aboneliği",
+                "kadin-kardes-yildonumu": "Trendy bileklik",
+                "kadin-kardes-sevgililergunu": "Kozmetik seti",
+                "kadin-kardes-yilbasi": "Tişört",
+                "kadin-kardes-yeniis": "Ayakkabı",
+                "kadin-kardes-annelergunu": "Yoga matı",
+                "kadin-arkadas-dogumgunu": "Parfüm",
+                "kadin-arkadas-yildonumu": "Moda çantası",
+                "kadin-arkadas-sevgililergunu": "Trendy aksesuar",
+                "kadin-arkadas-yilbasi": "Şampanya",
+                "kadin-arkadas-yeniis": "Kozmetik seti",
+                "kadin-arkadas-annelergunu": "Saç bakım seti",
+                "kadin-sevgili-dogumgunu": "Takı seti",
+                "kadin-sevgili-yildonumu": "Romantik tatil",
+                "kadin-sevgili-sevgililergunu": "Özel bir sürpriz",
+                "kadin-sevgili-yilbasi": "Moda marka ürün",
+                "kadin-sevgili-yeniis": "Parfüm",
+                "kadin-sevgili-annelergunu": "Hediye kartı",
+                "erkek-anne-dogumgunu": "Elektronik aksesuarlar",
+                "erkek-anne-yildonumu": "Saat",
+                "erkek-anne-sevgililergunu": "Kol düğmesi",
+                "erkek-anne-yilbasi": "Hediye seti",
+                "erkek-anne-yeniis": "Ofis masası",
+                "erkek-anne-annelergunu": "Golf seti",
+                "erkek-baba-dogumgunu": "Deri cüzdan",
+                "erkek-baba-yildonumu": "Kahve makinesi",
+                "erkek-baba-sevgililergunu": "Elektronik aksesuarlar",
+                "erkek-baba-yilbasi": "Bira seti",
+                "erkek-baba-yeniis": "Kravat",
+                "erkek-baba-annelergunu": "Mutfak aksesuarları",
+                "erkek-kardes-dogumgunu": "Spor ayakkabı",
+                "erkek-kardes-yildonumu": "Oyun konsolu",
+                "erkek-kardes-sevgili": "Söz konusu değil",
+                "erkek-kardes-sevgililergunu": "Elektronik aksesuarlar",
+                "erkek-kardes-yilbasi": "Spor giyim",
+                "erkek-kardes-yeniis": "Spor ekipmanları",
+                "erkek-kardes-annelergunu": "Yemek yapma seti",
+                "erkek-arkadas-dogumgunu": "Cüzdan",
+                "erkek-arkadas-yildonumu": "Parfüm",
+                "erkek-arkadas-sevgililergunu": "Spor giyim",
+                "erkek-arkadas-yilbasi": "Elektronik aksesuarlar",
+                "erkek-arkadas-yeniis": "Spor malzemeleri",
+                "erkek-arkadas-annelergunu": "Bira bardak seti",
+                "erkek-sevgili-dogumgunu": "Lüks saat",
+                "erkek-sevgili-yildonumu": "Romantik tatil",
+                "erkek-sevgili-sevgililergunu": "Özel bir sürpriz",
+                "erkek-sevgili-yilbasi": "Moda marka ürün",
+                "erkek-sevgili-yeniis": "Parfüm",
+                "erkek-sevgili-annelergunu": "Hediye kartı"
+            };
+
+            var key = cinsiyet + "-" + alici + "-" + durum;
+            var hediye = hediyeOnerileri[key];
+
+            if (hediye) {
+                var hobilerMetin = hobiler.join(", ");
+                document.getElementById("hediyeOnerisi").innerHTML = "Size önerilen hediye: " + hediye + "<br>Hobileriniz: " + hobilerMetin;
+            } else {
+                document.getElementById("hediyeOnerisi").innerHTML = "Maalesef, bu seçimlere uygun bir hediye önerisi bulunamadı.";
+            }
+        }
+    </script>
+</body>
+</html>
